@@ -1,19 +1,20 @@
 import React from "react";
 
-
 class User extends React.Component {
-    user = this.props.user
+  user = this.props.user;
 
-    render () {
+  render() {
     return (
-      <div >
+      <div>
         <div>
-        <h3>{this.user.firstName} {this.user.lastName}</h3>
-        <p>{this.user.isHappy ? 'Happy :)':'Unhappy'}</p>
+          <h3>
+            {this.user.firstName} {this.user.lastName}
+          </h3>
+          <p>{this.user.isHappy ? "Happy :)" : "Unhappy"}</p>
         </div>
       </div>
-    )
-    }
+    );
   }
+}
 
-  export default User
+export default User;
