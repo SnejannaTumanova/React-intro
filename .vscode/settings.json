@@ -1,0 +1,28 @@
+{
+  // Разрешает форматирование документа и автоматическое исправление ошибок при сохранении
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    // Автоматическое исправление для ESLint
+    "source.fixAll.eslint": true
+  },
+
+  // Определяет, для каких языков будет активирован ESLint
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    // Добавьте другие языки при необходимости
+  ],
+
+  // Указывает путь к файлу конфигурации ESLint, если он отличается от стандартного
+  "eslint.options": {
+    "configFile": "path/to/your/eslintrc.json"
+  },
+
+  // Убедитесь, что ESLint установлен глобально или в рабочей области
+  "eslint.packageManager": "npm",
+
+  // Настройки могут включать любые дополнительные параметры, которые вы хотите задать
+  "eslint.alwaysShowStatus": true
+}
