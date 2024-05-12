@@ -5,12 +5,7 @@ import Users from "./Users";
 import AddUser from "./AddUser";
 import Button from "./Button";
 
-//Создание компонента внутри файла JS через обычную функцию -> function App ()
 function App() {
-  //const helpText = 'Help text'
-  //<h1>{helpText}</h1>
-  //<p>{helpText ==='Help text' ? 'help text at top' : 'enter your details'}</p>
-
   const [users, setUsers] = useState([
     { id: 1, firstName: "Bob", lastName: "Marley", age: 40, isHappy: true },
     { id: 2, firstName: "John", lastName: "Doe", age: 22, isHappy: false },

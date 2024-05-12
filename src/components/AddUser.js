@@ -1,62 +1,78 @@
-import React from "react";
+import React, { useState } from "react";
 
-class AddUser extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      id: 1,
-      firstName: "",
-      lastName: "",
-      age: 1,
-      isHappy: false,
-    };
-  }
+function AddUser(props) {
+  const initialStateUser = {
+    id: 1,
+    firstName: "",
+    lastName: "",
+    age: 1,
+    isHappy: false,
+  };
+  const [newUser, setNewUser] = useState(initialStateUser);
 
-  handleAddUser = () => {
-    const newUser = {
-      id: this.props.users.length + 1, // Автоматическое увеличение ID на основе длины массива
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
-      age: parseInt(this.state.age), // Убедитесь, что возраст — это число
-      isHappy: this.state.isHappy,
-    };
-    this.props.setUsers((prevUsers) => [...prevUsers, newUser]); // Использование spread operator для добавления нового пользователя
+  const handleAddUser = () => {
+    props.setUsers((prevUsers) => [
+      ...prevUsers,
+      { ...newUser, id: props.users.length + 1 },
+    ]);
   };
 
-  render() {
-    return (
-      <form className="formUs" ref={(el) => (this.myForm = el)}>
-        <input
-          placeholder="Firstname"
-          onChange={(el) => this.setState({ firstName: el.target.value })}
-        />
-        <input
-          placeholder="Lastname"
-          onChange={(el) => this.setState({ lastName: el.target.value })}
-        />
-        <input
-          placeholder="Age"
-          onChange={(el) => this.setState({ age: el.target.value })}
-        />
-        <label htmlFor="isHappy">Is happy?</label>
-        <input
-          type="checkbox"
-          id="isHappy"
-          checked={this.state.isHappy}
-          onChange={(el) => this.setState({ isHappy: el.target.checked })}
-        />
-        <button
-          type="button"
-          onClick={() => {
-            this.myForm.reset();
-            this.handleAddUser();
-          }}
-        >
-          Send
-        </button>
-      </form>
-    );
-  }
+  const handleResetForm = () => {
+    setNewUser(initialStateUser);
+  };
+
+  return (
+    <form className="formUs">
+      <input
+        placeholder="Firstname"
+        onChange={(event) =>
+          setNewUser((prevState) => ({
+            ...prevState,
+            firstName: event.target.value,
+          }))
+        }
+      />
+      <input
+        placeholder="Lastname"
+        onChange={(event) =>
+          setNewUser((prevState) => ({
+            ...prevState,
+            lastName: event.target.value,
+          }))
+        }
+      />
+      <input
+        placeholder="Age"
+        onChange={(event) =>
+          setNewUser((prevState) => ({
+            ...prevState,
+            age: event.target.value,
+          }))
+        }
+      />
+      <label htmlFor="isHappy">Is happy?</label>
+      <input
+        type="checkbox"
+        id="isHappy"
+        checked={newUser.isHappy}
+        onChange={(event) =>
+          setNewUser((prevState) => ({
+            ...prevState,
+            isHappy: event.target.checked,
+          }))
+        }
+      />
+      <button
+        type="button"
+        onClick={() => {
+          handleResetForm();
+          handleAddUser();
+        }}
+      >
+        Send
+      </button>
+    </form>
+  );
 }
 
 export default AddUser;
