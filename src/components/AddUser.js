@@ -25,7 +25,7 @@ class AddUser extends React.Component {
 
   render() {
     return (
-      <form className="formUs">
+      <form className="formUs" ref={(el) => (this.myForm = el)}>
         <input
           placeholder="Firstname"
           onChange={(el) => this.setState({ firstName: el.target.value })}
@@ -45,7 +45,13 @@ class AddUser extends React.Component {
           checked={this.state.isHappy}
           onChange={(el) => this.setState({ isHappy: el.target.checked })}
         />
-        <button type="button" onClick={this.handleAddUser}>
+        <button
+          type="button"
+          onClick={() => {
+            this.myForm.reset();
+            this.handleAddUser();
+          }}
+        >
           Send
         </button>
       </form>

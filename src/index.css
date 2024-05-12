@@ -82,3 +82,24 @@ code {
   color: azure;
   font-weight: 700;
 }
+
+.user {
+  background-color: rgb(245, 131, 163);
+  border: 2px solid white;
+  margin: 20px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.icons {
+  width: 30px;
+  margin: 5px;
+  border-radius: 50%;
+  opacity: 0.8;
+}
+
+.icons:hover {
+  opacity: 1;
+  box-shadow: 2px 2px 6px white;
+}

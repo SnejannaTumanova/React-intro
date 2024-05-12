@@ -3,9 +3,7 @@ import Header from "./Header";
 import Img from "./Img";
 import Users from "./Users";
 import AddUser from "./AddUser";
-
-//const inputClick = () => console.log('Click!')
-//const mouseOver = () => console.log('Mouse over!')
+import Button from "./Button";
 
 //Создание компонента внутри файла JS через обычную функцию -> function App ()
 function App() {
@@ -20,13 +18,14 @@ function App() {
   return (
     <div className="name">
       <main>
+        <Button />
         <Header />
         <Img src="https://yt3.googleusercontent.com/LW3jxNDVq-mvRoKiFS5Bd8G_yPa7IQHCt3F6i9N-UYDAlSZhaY4h968kvZqsGMg-QmKf_9Y3r5Q=s900-c-k-c0x00ffffff-no-rj" />
         <Img src="https://img.freepik.com/free-photo/beautiful-kitten-with-colorful-clouds_23-2150752964.jpg" />
       </main>
       <aside>
         <AddUser users={users} setUsers={setUsers} />
-        <Users users={users} />
+        <Users users={users} setUsers={setUsers} />
       </aside>
     </div>
   );

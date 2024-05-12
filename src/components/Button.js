@@ -6,7 +6,7 @@ const Button = (props) => {
 
   useEffect(() => {
     document.title = `You clicked button ${click}`;
-  });
+  }, [click]);
   return (
     <button onClick={() => setClick(click + 1)}>
       {props.text} {click}

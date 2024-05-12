@@ -1,6 +1,5 @@
 import React from "react";
 import User from "./User";
-import { anyUser } from "./App";
 
 //Создание компонента внутри файла JS через класс
 class Users extends React.Component {
@@ -12,10 +11,13 @@ class Users extends React.Component {
     return (
       <div>
         {this.props.users.map((el) => (
-          <User key={el.id} user={el} />
+          <User onDelete={() => this.deleteUser(el.id)} key={el.id} user={el} />
         ))}
       </div>
     );
+  }
+  deleteUser(id) {
+    this.props.setUsers(this.props.users.filter((user) => user.id !== id));
   }
 }
 
