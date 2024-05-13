@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const Button = (props) => {
+const Button = ({ text = "button" }) => {
   const [click, setClick] = useState(0);
 
   useEffect(() => {
@@ -9,7 +9,7 @@ const Button = (props) => {
 
   return (
     <button onClick={() => setClick(click + 1)}>
-      {props.text || "button"} {click}
+      {text} {click}
     </button>
   );
 };

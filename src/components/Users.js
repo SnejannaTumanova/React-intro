@@ -1,17 +1,28 @@
 import React from "react";
 import User from "./User";
 
-function Users(props) {
+function Users({ users, setUsers }) {
   return (
     <div>
-      {props.users.map((el) => (
-        <User onDelete={() => deleteUser(el.id)} key={el.id} user={el} />
+      {users.map((el) => (
+        <User
+          onEdit={editingUser}
+          onDelete={() => deleteUser(el.id)}
+          key={el.id}
+          user={el}
+          setUsers={setUsers}
+          users={users}
+        />
       ))}
     </div>
   );
 
   function deleteUser(id) {
-    props.setUsers(props.users.filter((user) => user.id !== id));
+    setUsers(users.filter((user) => user.id !== id));
+  }
+
+  function editingUser(user) {
+    console.log(user);
   }
 }
 

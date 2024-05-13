@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-function AddUser(props) {
+function AddUser({ users, id, setUsers }) {
   const initialStateUser = {
-    id: 1,
+    id: users.length + 1,
     firstName: "",
     lastName: "",
     age: 1,
@@ -10,10 +10,24 @@ function AddUser(props) {
   };
   const [newUser, setNewUser] = useState(initialStateUser);
 
+  const handleEditUser = (id) => {
+    setUsers((prevUsers) => {
+      return prevUsers.map((user) => {
+        if (user.id === id) {
+          // Возвращаем обновлённого пользователя с новыми данными, кроме id
+          return { ...user, ...newUser, id: user.id };
+        } else {
+          // Возвращаем неизменённого пользователя
+          return user;
+        }
+      });
+    });
+  };
+
   const handleAddUser = () => {
-    props.setUsers((prevUsers) => [
+    setUsers((prevUsers) => [
       ...prevUsers,
-      { ...newUser, id: props.users.length + 1 },
+      { ...newUser, id: users.length + 1 },
     ]);
   };
 
@@ -66,7 +80,7 @@ function AddUser(props) {
         type="button"
         onClick={() => {
           handleResetForm();
-          handleAddUser();
+          id ? handleEditUser(id) : handleAddUser();
         }}
       >
         Send

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Img(props) {
+function Img({ src }) {
   const [property, setProperty] = useState({
     parag: "This image",
     userData: "",
@@ -18,7 +18,7 @@ function Img(props) {
   return (
     <div className="imgDiv">
       <p>{property.parag}</p>
-      <img className="img" src={props.src} alt={nameAlt} onClick={imageClick} />
+      <img className="img" src={src} alt={nameAlt} onClick={imageClick} />
       <p>{property.userData}</p>
       <input
         placeholder="Help text"
